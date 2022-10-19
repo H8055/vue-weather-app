@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'app',
   data () {
@@ -38,11 +39,11 @@ export default {
     }
   },
   methods: {
-    fetchWeather (e) {
+    async fetchWeather (e) {
       if (e.key == "Enter") {
-        fetch(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
+        await axios.get(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
           .then(res => {
-            return res.json();
+            return res.data;
           }).then(this.setResults);
       }
     },
