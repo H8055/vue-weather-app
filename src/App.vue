@@ -1,11 +1,12 @@
 <template>
   <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : ''">
     <main>
+      <div class="heading">Weather Forecast</div>
       <div class="search-box">
         <input 
           type="text" 
           class="search-bar" 
-          placeholder="Search..."
+          placeholder="Search City Name"
           v-model="query"
           @keypress="fetchWeather"
         />
@@ -81,6 +82,14 @@ body {
 }
 #app.warm {
   background-image: url('./assets/warm-bg.jpg');
+}
+.heading{
+  color: #FFF;
+  font-size: 32px;
+  font-weight: bolder;
+  text-align: center;
+  text-shadow: 1px 3px rgba(0, 0, 0, 0.25);
+  padding-bottom: 25px;
 }
 main {
   min-height: 100vh;
